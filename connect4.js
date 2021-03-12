@@ -5,13 +5,13 @@
  * board fills (tie)
  */
 
-var WIDTH = 7;
-var HEIGHT = 6;
+const WIDTH = 9;
+const HEIGHT = 8;
 
-var currPlayer = 1; // active player: 1 or 2
-var board = []; // array of rows, each row is array of cells  (board[y][x])
+let currPlayer = 1; // active player: 1 or 2
+let board = []; // array of rows, each row is array of cells  (board[y][x])
 
-var gameOver = false;
+let gameOver = false;
 
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
@@ -34,13 +34,13 @@ function makeHtmlBoard() {
   let htmlBoard = document.getElementById("board");
 
   // create the top column element and gives it a click event listener
-  var top = document.createElement("tr");
+  const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
   // creates a head cell for the top of each colum
   for (var x = 0; x < WIDTH; x++) {
-    var headCell = document.createElement("td");
+    const headCell = document.createElement("td");
     headCell.setAttribute("id", x);
     top.append(headCell);
   }
@@ -76,7 +76,7 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   const newPiece = document.createElement("div");
-  newPiece.className = `piecePlayer${currPlayer}`;
+  newPiece.className = `piecePlayer${currPlayer} animate__animated animate__tada`;
   const insertCell = document.getElementById(`${y - 1}-${x}`);
 
   insertCell.append(newPiece);
